@@ -41,7 +41,6 @@ public class CommentActivity extends AppCompatActivity {
                 sendComment(comment, postId);
             }
         });
-
     }
 
     private void loadComments(int postId) {

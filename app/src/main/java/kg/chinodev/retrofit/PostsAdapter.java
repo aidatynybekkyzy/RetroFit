@@ -74,4 +74,3 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         void onPostClicked(int postId);
     }
 }
-

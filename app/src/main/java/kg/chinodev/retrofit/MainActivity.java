@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 .getPosts()
                 .enqueue(new Callback<List<PostItem>>() {
                     @Override
-                    public void onResponse(Call<List<PostItem>> call, Response<List<PostItem>> response) {
+                    public void onResponse(Call<List<PostItem>> call, Response<List<PostItem>> response) { //после получения данных
                         if (response.isSuccessful()) {
                             displayPosts(response.body());
                         } else {
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayPosts(List<PostItem> data) {
-        PostsAdapter adapter = new PostsAdapter(
+        PostsAdapter adapter = new PostsAdapter( //Адаптер сообщений
                 new ArrayList<>(data),
                 MainActivity.this
         );
@@ -64,5 +64,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         postsRV.setAdapter(adapter);
-    }
+    } //отображать сообщения
 }

@@ -12,16 +12,16 @@ public class NetworkService {
                 .baseUrl("https://jsonplaceholder.typicode.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-    }
+    } //точка входа в приложение
 
     public static NetworkService getInstance() {
         if (service == null) {
             service = new NetworkService();
         }
         return service;
-    }
+    } //получить экземпляр
 
     public JsonPlaceHolderApi getApi() {
         return mRetrofit.create(JsonPlaceHolderApi.class);
-    }
+    } //Api для держателя места Json
 }
