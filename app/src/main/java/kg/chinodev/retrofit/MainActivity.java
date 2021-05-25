@@ -3,15 +3,10 @@ package kg.chinodev.retrofit;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         loadPosts();
     }
 
-    private void loadPosts() {
+    private void loadPosts() { //Точка входа
         NetworkService.getInstance()
                 .getApi()
                 .getPosts()
                 .enqueue(new Callback<List<PostItem>>() {
                     @Override
                     public void onResponse(Call<List<PostItem>> call, Response<List<PostItem>> response) { //после получения данных
-                        if (response.isSuccessful()) {
+                        if (response.isSuccessful()) { //Если успешно получили
                             displayPosts(response.body());
                         } else {
                             System.out.println(response.code() + " " + response.message());
@@ -44,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<List<PostItem>> call, Throwable t) {
+                    public void onFailure(Call<List<PostItem>> call, Throwable t) { //при неудаче
                         t.printStackTrace();
                     }
                 });

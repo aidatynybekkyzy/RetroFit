@@ -15,6 +15,6 @@ public interface JsonPlaceHolderApi {
     @GET("/posts/{post_id}/comments/")
     public Call<List<CommentItem>> getComments(@Path("post_id") int id);
 
-    @POST("/posts/{post_id}/comments/")
+    @POST("/posts/{post_id}/comments/") //Для нужных значений, типо нам именно это нужно
     public Call<CommentPostResponse> postComment(@Path("post_id") int id, @Body CommentPostItem item);
 }

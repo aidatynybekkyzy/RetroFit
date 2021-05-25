@@ -22,16 +22,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     public PostsAdapter(ArrayList<PostItem> data, Context context) {
         this.data = data;
         this.context = context;
-    }
+    } //Конструктор
 
     public void setListener(PostClickListener listener) {
         this.listener = listener;
-    }
+    } //конструктор с прослушивание сообщений после кликов
 
     @NonNull
     @Override
-    public PostsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.rv_item_post, parent, false);
+    public PostsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //Пихать при создании
+        View view = LayoutInflater.from(context).inflate(R.layout.rv_item_post, parent, false); //LayoutInflater - надуватель
         return new ViewHolder(view);
     }
 
@@ -42,12 +42,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.id.setText("User ID: " + item.getUserId());
         holder.title.setText(item.getTitle());
         holder.body.setText(item.getBody());
-        holder.container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onPostClicked(item.getId());
-            }
-        });
+        holder.container.setOnClickListener(v -> listener.onPostClicked(item.getId()));
     }
 
     @Override
@@ -55,11 +50,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         return data.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder { //Просмотр ресайклера
         private final TextView id;
         private final TextView title;
         private final TextView body;
-        private ConstraintLayout container;
+        private final ConstraintLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

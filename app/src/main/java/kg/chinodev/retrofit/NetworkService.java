@@ -10,7 +10,7 @@ public class NetworkService {
     private NetworkService() {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create()) //Gson Converter Factory - конвертируем чтобы появились Java файлы
                 .build();
     } //точка входа в приложение
 
